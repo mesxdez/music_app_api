@@ -1,15 +1,60 @@
-const express = require('express');
-const body_parser = require('body-parser');
-const UserRouter = require('./routers/user.routers');
-const cors = require('cors');
-
+const express = require("express");
 const app = express();
+const port = 3000;
 
-app.use(cors());
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+app.get("/information", (req, res) => {
+  res.json([
+    {
+      _id: {
+        $oid: "65970db4248fac9e0bdb8f71",
+      },
+      songName: "And So It Begins",
+      artist: "Artificial.Music ",
+      img: "https://wallpaperaccess.com/full/1959300.jpg",
+      url: "https://www.chosic.com/wp-content/uploads/2021/04/And-So-It-Begins-Inspired-By-Crush-Sometimes.mp3",
+    },
+    {
+      _id: {
+        $oid: "65970dda248fac9e0bdb8f73",
+      },
+      artist: "Ghostrifter Official",
+      img: "https://wallpaperaccess.com/full/3033986.jpg",
+      url: "https://www.chosic.com/wp-content/uploads/2021/09/Morning-Routine-Lofi-Study-Music.mp3",
+      songName: "Morning Routine",
+    },
+    {
+      _id: {
+        $oid: "65970df9248fac9e0bdb8f75",
+      },
+      artist: "Purrple Cat",
+      img: "https://wallpaperaccess.com/full/946034.png",
+      url: "https://www.chosic.com/wp-content/uploads/2022/01/Missing-You.mp3",
+      songName: "Missing You",
+    },
+    {
+      _id: {
+        $oid: "65970e11248fac9e0bdb8f77",
+      },
+      artist: "Spheriá",
+      img: "https://wallpaperaccess.com/full/3815059.jpg",
+      url: "https://www.chosic.com/wp-content/uploads/2022/01/Dont-Forget-Me.mp3",
+      songName: "Don’t Forget",
+    },
+    {
+      _id: {
+        $oid: "65970e11248fac9e0bdb8f78",
+      },
+      artist: "Keys of Moon",
+      img: "https://wallpaperaccess.com/full/1422010.png",
+      url: "https://www.chosic.com/wp-content/uploads/2022/04/After-the-Rain-Inspiring-Atmospheric-Music.mp3",
+      songName: "After the Rain",
+    },
+  ]);
+});
 
-app.use(body_parser.json());
-
-app.use('/',UserRouter);
-
-
-module.exports = app;
+app.listen(port, () => {
+  console.log(`Listening at http://localhost:${port}`);
+});
